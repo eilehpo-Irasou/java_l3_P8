@@ -1,3 +1,8 @@
+Projet sur le thème de "World of Zuul".
+Le projet sera fait en Java en groupe de trois.
+Le projet a démarré sur des fichiers déjà créés 
+
+----------------------------------------------------
 Project: zuul-bad
 Authors: Michael Kolling and David J. Barnes
 
