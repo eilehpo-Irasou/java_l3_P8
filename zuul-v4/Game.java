@@ -224,6 +224,9 @@ public class Game
         else if (commandWord.equals("look"))
             look();
 
+        else if (commandWord.equals("eat"))
+            eat();
+
 
         else if (commandWord.equals("quit"))
             wantToQuit = quit(command);
@@ -240,12 +243,13 @@ public class Game
      */
     private void printHelp() 
     {
-        System.out.println("You are lost. You are alone. You wander");
-        System.out.println("around at the university.");
-        System.out.println();
-        System.out.println("Your command words are:");
+        //System.out.println("You are lost. You are alone. You wander");
+        //System.out.println("around at the university.");
+        //System.out.println();
+        //System.out.println("Your command words are:");
        // System.out.println("   go quit help look");
-        parser.showCommands();
+        //parser.showCommands();
+        System.out.println(parser.getCommandList());
     }
 
     /** 
@@ -325,6 +329,20 @@ private void look()
 	System.out.println(currentRoom.getLongDescription());
 }
 
+
+/* rajouter une fonction pour manger eat()
+ Il faut faire la même chose que pour look()
+ Pour le moment cette fonction ne fait pas 
+ l'action de manger, elle se contente juste
+ d'écrire "tu viens de manger !"
+*/
+
+ private void eat()
+ {
+ 	System.out.println("tu viens de manger !");
+	System.out.println(currentRoom.getLongDescription());
+
+ }
 
 
     /** 

@@ -35,10 +35,17 @@ public class Parser
     /**
 * Print out a list of valid command words.
 */
-	public void showCommands()
+	/*public void showCommands()
 	{
 		commands.showAll();
-	}
+	}*/
+
+
+	public String getCommandList()
+	{
+		return commands.getCommandList();
+ 	} 
+	
 
     /**
      * @return The next command from the user.
