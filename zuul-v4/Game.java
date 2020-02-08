@@ -75,22 +75,87 @@ public class Game
 
         /* initialisation des sorties des pièces */
         // Nord Est Sud Ouest
-        Le_port_du_Nil.setExits(null,Le_village,null,null); // 1
-        Le_village.setExits(null,null,La_pyramide,Le_port_du_Nil); // 2 
+       /* Le_port_du_Nil.setExits(null,Le_village,null,null); // 1
+
+
+        Le_village.setExits(null,null,La_pyramide,Le_port_du_Nil); // 2
+
         La_pyramide.setExits(Le_village,L_entree_pyramide,null,null); // 3 
+
         L_entree_pyramide.setExits(null,La_salle_du_culte,null,La_pyramide); //  4 
+        
         La_salle_du_culte.setExits(La_frichti,La_salle_de_bain,La_salle_du_choix,L_entree_pyramide); // 5 
+        
         La_frichti.setExits(null,La_salle_de_bain,La_salle_du_culte,null); // 6
+        
+        
+
+
         La_salle_de_bain.setExits(La_frichti,null,La_salle_du_culte,null); //7
+        
+
+
+       
+
+
         La_salle_du_choix.setExits(La_salle_du_culte,La_salle_de_la_mort,null,La_salle_pre_tombeau);//8
-        La_salle_de_la_mort.setExits(null,null,null,null); //9
-        La_salle_pre_tombeau.setExits(null,La_salle_du_choix,Le_tombeau,null);//10
-        Le_tombeau.setExits(La_chambre_de_la_reine,null,null,null);//11
-        La_chambre_de_la_reine.setExits(null,null,Le_paradis,null); // 12
-        Le_paradis.setExits(null,null,null,null);
+       
+        
+      
+      //  La_chambre_de_la_reine.setExits(null,null,Le_paradis,null); // 12
+        */
 
         // début du jeu : Le jeu commence au port du Nil.
         currentRoom = Le_port_du_Nil;
+
+       
+        Le_port_du_Nil.setExit("east",Le_village);
+
+        Le_village.setExit("south",La_pyramide);
+
+        La_pyramide.setExit("north",Le_village);
+        La_pyramide.setExit("east", L_entree_pyramide);
+
+        L_entree_pyramide.setExit("east",La_salle_du_culte);
+        L_entree_pyramide.setExit("west",La_pyramide);
+
+        La_salle_du_culte.setExit("north",La_frichti);
+        La_salle_du_culte.setExit("east",La_salle_de_bain);
+        La_salle_du_culte.setExit("south",La_salle_du_choix);
+        La_salle_du_culte.setExit("west",L_entree_pyramide);
+
+        
+
+
+       La_frichti.setExit("east",La_salle_de_bain);
+       La_frichti.setExit("south",La_salle_du_culte);
+
+       La_salle_de_bain.setExit("north",La_frichti);
+       La_salle_de_bain.setExit("south",La_salle_du_culte);
+
+       La_salle_du_choix.setExit("north",La_salle_du_culte);
+       La_salle_du_choix.setExit("east",La_salle_de_la_mort);
+       La_salle_du_choix.setExit("west",La_salle_pre_tombeau);
+// La_salle_de_la_mort.setExits(null,null,null,null); //9
+
+//La_salle_pre_tombeau.setExits(null,La_salle_du_choix,Le_tombeau,null);//10
+
+       La_salle_pre_tombeau.setExit("east",La_salle_du_choix);
+       La_salle_pre_tombeau.setExit("south",Le_tombeau);
+
+//  Le_tombeau.setExits(La_chambre_de_la_reine,null,null,null);//11
+
+       Le_tombeau.setExit("north", La_chambre_de_la_reine);
+
+//  La_chambre_de_la_reine.setExits(null,null,Le_paradis,null); // 12
+
+       La_chambre_de_la_reine.setExit("south",Le_paradis);
+
+//Le_paradis.setExits(null,null,null,null);
+
+
+
+
 
     }
 
@@ -122,9 +187,10 @@ public class Game
         System.out.println("World of Zuul is a new, incredibly boring adventure game.");
         System.out.println("Type 'help' if you need help.");
         System.out.println();
-        System.out.println("Vous êtes " + currentRoom.getDescription());
-        System.out.print("Exits: ");
-        if(currentRoom.northExit != null)
+        printLocationInfo();
+       // System.out.println("Vous êtes " + currentRoom.getDescription());
+        //System.out.print("Exits: ");
+      /*  if(currentRoom.northExit != null)
             System.out.print("north ");
         if(currentRoom.eastExit != null)
             System.out.print("east ");
@@ -132,7 +198,7 @@ public class Game
             System.out.print("south ");
         if(currentRoom.westExit != null)
             System.out.print("west ");
-        System.out.println();
+        System.out.println();*/
     }
 
     /**
@@ -154,6 +220,11 @@ public class Game
             printHelp();
         else if (commandWord.equals("go"))
             goRoom(command);
+
+        else if (commandWord.equals("look"))
+            look();
+
+
         else if (commandWord.equals("quit"))
             wantToQuit = quit(command);
 
@@ -173,7 +244,8 @@ public class Game
         System.out.println("around at the university.");
         System.out.println();
         System.out.println("Your command words are:");
-        System.out.println("   go quit help");
+       // System.out.println("   go quit help look");
+        parser.showCommands();
     }
 
     /** 
@@ -191,18 +263,20 @@ public class Game
         String direction = command.getSecondWord();
 
         // Try to leave current room.
-        Room nextRoom = null;
+       // Room nextRoom = null;
+        Room nextRoom = currentRoom.getExit(direction);
+
         if(direction.equals("north")) {
-            nextRoom = currentRoom.northExit;
+            nextRoom = currentRoom.getExit("north");
         }
         if(direction.equals("east")) {
-            nextRoom = currentRoom.eastExit;
+            nextRoom = currentRoom.getExit("east");
         }
         if(direction.equals("south")) {
-            nextRoom = currentRoom.southExit;
+            nextRoom = currentRoom.getExit("south");
         }
         if(direction.equals("west")) {
-            nextRoom = currentRoom.westExit;
+            nextRoom = currentRoom.getExit("west");
         }
 
         if (nextRoom == null) {
@@ -210,9 +284,10 @@ public class Game
         }
         else {
             currentRoom = nextRoom;
-            System.out.println("Vous êtes " + currentRoom.getDescription());
-            System.out.print("Exits: ");
-            if(currentRoom.northExit != null)
+            //System.out.println("Vous êtes " + currentRoom.getDescription());
+            //System.out.print("Exits: ");
+            printLocationInfo();
+          /*  if(currentRoom.northExit != null)
                 System.out.print("north ");
             if(currentRoom.eastExit != null)
                 System.out.print("east ");
@@ -220,14 +295,38 @@ public class Game
                 System.out.print("south ");
             if(currentRoom.westExit != null)
                 System.out.print("west ");
-            System.out.println();
+            System.out.println();*/
         }
     }
 
+
 private void printLocationInfo()
 {
-	
+	 System.out.println("Vous êtes " + currentRoom.getDescription());
+     System.out.print("Exits: ");
+    /*  if(currentRoom.northExit != null)
+                System.out.print("north ");
+            if(currentRoom.eastExit != null)
+                System.out.print("east ");
+            if(currentRoom.southExit != null)
+                System.out.print("south ");
+            if(currentRoom.westExit != null)
+                System.out.print("west ");*/
+                //System.out.print(currentRoom.getExitString());
+                System.out.println(currentRoom.getLongDescription());
+            System.out.println();
 }
+
+
+
+private void look()
+{
+	System.out.println("look button");
+	System.out.println(currentRoom.getLongDescription());
+}
+
+
+
     /** 
      * "Quit" was entered. Check the rest of the command to see
      * whether we really quit the game.

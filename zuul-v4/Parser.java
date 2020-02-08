@@ -31,6 +31,15 @@ public class Parser
         reader = new Scanner(System.in);
     }
 
+
+    /**
+* Print out a list of valid command words.
+*/
+	public void showCommands()
+	{
+		commands.showAll();
+	}
+
     /**
      * @return The next command from the user.
      */
