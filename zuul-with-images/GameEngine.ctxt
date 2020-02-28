@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.target=GameEngine
+comment0.text=\n\ \ This\ class\ is\ part\ of\ the\ "World\ of\ Zuul"\ application.\ \n\ \ "World\ of\ Zuul"\ is\ a\ very\ simple,\ text\ based\ adventure\ game.\n\ \n\ \ This\ class\ creates\ all\ rooms,\ creates\ the\ parser\ and\ starts\n\ \ the\ game.\ \ It\ also\ evaluates\ and\ executes\ the\ commands\ that\ \n\ \ the\ parser\ returns.\n\ \n\ @author\ \ Michael\ Kolling\ and\ David\ J.\ Barnes\n\ @version\ 1.0\ (Jan\ 2003)\n
+comment1.params=
+comment1.target=GameEngine()
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ GameEngine\n
+comment2.params=userInterface
+comment2.target=void\ setGUI(UserInterface)
+comment3.params=
+comment3.target=void\ printWelcome()
+comment3.text=\n\ Print\ out\ the\ opening\ message\ for\ the\ player.\n
+comment4.params=
+comment4.target=void\ createRooms()
+comment4.text=\n\ Create\ all\ the\ rooms\ and\ link\ their\ exits\ together.\n
+comment5.params=commandLine
+comment5.target=void\ interpretCommand(java.lang.String)
+comment5.text=\n\ Given\ a\ command,\ process\ (that\ is\:\ execute)\ the\ command.\n\ If\ this\ command\ ends\ the\ game,\ true\ is\ returned,\ otherwise\ false\ is\n\ returned.\n
+comment6.params=
+comment6.target=void\ printHelp()
+comment6.text=\n\ Print\ out\ some\ help\ information.\n\ Here\ we\ print\ some\ stupid,\ cryptic\ message\ and\ a\ list\ of\ the\ \n\ command\ words.\n
+comment7.params=command
+comment7.target=void\ goRoom(Command)
+comment7.text=\ \n\ Try\ to\ go\ to\ one\ direction.\ If\ there\ is\ an\ exit,\ enter\ the\ new\n\ room,\ otherwise\ print\ an\ error\ message.\n
+comment8.params=
+comment8.target=void\ endGame()
+numComments=9
