@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=Items
+comment0.text=\nClasse\ pour\ les\ items\ du\ jeu.\nOn\ peut\ d\u00E9crire\ l'objet\nconnaitre\ son\ poid,\ et\ son\ prix.
+comment1.params=DSO\ SPX\ SPS
+comment1.target=Items(java.lang.String,\ double,\ double)
+comment1.text=\ on\ utilise\ le\ mot\ cl\u00E9\ "final"\n\tpour\ dire\ qu'un\ objet\ ne\ changera\ pas\n\tde\ caract\u00E9ristiques\ pendant\ tout\ \nle\ long\ du\ jeu.
+comment2.params=
+comment2.target=java.lang.String\ Descripion_item()
+comment3.params=
+comment3.target=double\ Descripion_poids()
+comment4.params=
+comment4.target=double\ Descripion_prix()
+comment5.params=DSO
+comment5.target=void\ _DSO(java.lang.String)
+comment6.params=SPX
+comment6.target=void\ _SPX(double)
+comment7.params=SPS
+comment7.target=void\ _SPS(double)
+comment8.params=
+comment8.target=java.lang.String\ toString()
+numComments=9

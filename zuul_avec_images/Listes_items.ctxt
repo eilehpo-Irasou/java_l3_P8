@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Listes_items
+comment1.params=
+comment1.target=Listes_items()
+comment2.params=
+comment2.target=java.lang.String\ get_ItemsString()
+comment3.params=Stringitem\ bItems
+comment3.target=void\ Prendre_item(java.lang.String,\ Items)
+comment4.params=Stringitem
+comment4.target=void\ Retirer_item(java.lang.String)
+comment5.params=pName\ pItem
+comment5.target=void\ addItem(java.lang.String,\ Items)
+comment6.params=Itms
+comment6.target=Items\ getItems(java.lang.String)
+numComments=7
